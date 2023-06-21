@@ -24,8 +24,9 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-
-   
+    a {
+        list-style: none;
+    }
 `
 
 export {GlobalStyle};
