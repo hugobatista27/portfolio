@@ -21,7 +21,8 @@ const Graduation: typeGraduations[] = [
 
 type typeHardSkill = {
     course: string,
-    skills: string[]
+    skills: string[],
+    className: string
 }
 
 const HardSkills: typeHardSkill[] = [
@@ -35,7 +36,8 @@ const HardSkills: typeHardSkill[] = [
             "React",
             "Sass",
             "Styled-Components",
-        ]
+        ],
+        className: 'front'
     },
     {
         course: "Back",
@@ -44,7 +46,8 @@ const HardSkills: typeHardSkill[] = [
             "Express",
             "Mongo",
             "MySQL",
-        ]
+        ],
+        className: 'back'
     },
     {
         course: "Outros",
@@ -53,7 +56,8 @@ const HardSkills: typeHardSkill[] = [
             "Photoshop",
             "Microsoft 365",
             "Google Workspace",
-        ]
+        ],
+        className: 'other'
     }
 ]
 
