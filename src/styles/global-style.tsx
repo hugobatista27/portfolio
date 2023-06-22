@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
 const ContentWidth = styled.div`
     max-width: 1000px;
     margin: auto;
+    padding: 0 10px;
 `
 
 export {GlobalStyle, ContentWidth};
