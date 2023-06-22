@@ -1,63 +1,7 @@
 import { ContentWidth } from "../../../styles/global-style";
+import styled from 'styled-components';
 
-const SoftSkills: string[] = [
-    "Comunicação",
-    "Inteligência Emocional",
-    "Proatividade",
-    "Autonomia"
-]
-
-type typeGraduations = {
-    course: string,
-    startYear: number,
-    conclusionYear: number,
-}
-
-const Graduation: typeGraduations[] = [
-    {
-        course: "Licenciatura em Educação Física",
-        startYear: 2019,
-        conclusionYear: 2023,
-    }
-]
-
-type typeHardSkill = {
-    course: string,
-    skills: string[]
-}
-
-const HardSkills: typeHardSkill[] = [
-    {
-        course: "Front",
-        skills: [
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "TypeScript",
-            "React",
-            "Sass",
-            "Styled-Components",
-        ]
-    },
-    {
-        course: "Back",
-        skills: [
-            "Node",
-            "Express",
-            "Mongo",
-            "MySQL",
-        ]
-    },
-    {
-        course: "Outros",
-        skills: [
-            "Figma",
-            "Photoshop",
-            "Microsoft 365",
-            "Google Workspace",
-        ]
-    }
-]
+import { SoftSkills, Graduation, HardSkills } from './data'
 
 export default function Skills() {
     return (
@@ -66,12 +10,33 @@ export default function Skills() {
                 <h1>Skills</h1>
                 <div>
                     <h2>Soft</h2>
+                    <ul>
+                        {SoftSkills.map((skill, index) => <li key={skill + index}>{skill}</li>)}
+                    </ul>
                 </div>
                 <div>
                     <h2>Graduação</h2>
+                    <ul>
+                        {Graduation.map((obj, index) => <li key={obj.course + index}>
+                            <p>{obj.course}</p>
+                            <p>{obj.startYear} - {obj.conclusionYear}</p>
+                        </li>)}
+                    </ul>
                 </div>
                 <div>
                     <h2>Hard</h2>
+                    <ul>
+                        {HardSkills.map((obj, index) => {
+                            return (
+                                <div key={obj.course + index}>
+                                    <h3>{obj.course}</h3>
+                                    {obj.skills.map((skill, index) => <li key={skill + index}>
+                                        {skill}
+                                    </li>)}
+                                </div>
+                            )
+                        })}
+                    </ul>
                 </div>
             </ContentWidth>
         </>
