@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -9,11 +9,6 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
 
         box-sizing: border-box;
-    }
-
-    #root {
-        max-width: 1000px;
-        margin: auto;
     }
 
     button {
@@ -29,4 +24,9 @@ const GlobalStyle = createGlobalStyle`
     }
 `
 
-export {GlobalStyle};
+const ContentWidth = styled.div`
+    max-width: 1000px;
+    margin: auto;
+`
+
+export {GlobalStyle, ContentWidth};
