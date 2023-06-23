@@ -17,8 +17,26 @@ const HeaderStyle = styled.header`
         align-items: center;
         gap: 26px;
 
-        button {
+        a {
             font-size: 18px;
+            text-decoration: none;
+
+            --s: 0.1em;   
+            --c: rgb(16, 149, 193); 
+            
+            color: #0000;
+            padding-bottom: var(--s);
+            background: 
+                linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
+                linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+                
+            -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+            transition: 0.5s;
+
+            &:hover {
+            --_p: 100%
+            }
         }
     }
 `
@@ -42,9 +60,9 @@ export default function Header() {
                     <span>GO</span>
                 </LogoStyle>
                 <nav>
-                    <button>HOME</button>
-                    <button>SKILLS</button>
-                    <button>PROJECTS</button>
+                    <a href="">HOME</a>
+                    <a href="">SKILLS</a>
+                    <a href="">PROJECTS</a>
                 </nav>
             </ContentWidth>
         </HeaderStyle>
