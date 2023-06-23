@@ -116,6 +116,8 @@ const HardSkillsStyle = styled.div`
             height: 74px;
             gap: 0 24px;
             overflow: hidden;
+            box-sizing: content-box;
+            padding-bottom: 10px;
         }
     }
     .back {
@@ -124,6 +126,8 @@ const HardSkillsStyle = styled.div`
     .other {
         grid-area: other;
     }
+
+    
 
     @media (max-width: 650px) {
             & > div {
@@ -135,6 +139,11 @@ const HardSkillsStyle = styled.div`
                     display: block;
                     height: auto;
                 }
+            }
+
+            ul {
+                box-sizing: content-box;
+                padding-bottom: 10px;
             }
         }
     }
