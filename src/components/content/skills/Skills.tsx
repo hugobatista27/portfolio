@@ -55,7 +55,6 @@ const BoxSkills = styled.div`
         border: 1px solid black;
 
         padding: 15px;
-
     }
 
     .soft {
@@ -79,6 +78,21 @@ const BoxSkills = styled.div`
             "graduation img "
             "hard hard";
         grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 650px) {
+        width: 300px;
+
+        grid-template-areas:
+            "img"
+            "soft"
+            "graduation"
+            "hard";
+        grid-template-columns: 1fr;
+
+        & > img {
+            width: 100%;
+        }
     }
 `;
 
@@ -109,6 +123,20 @@ const HardSkillsStyle = styled.div`
     }
     .other {
         grid-area: other;
+    }
+
+    @media (max-width: 650px) {
+            & > div {
+                display: flex;
+                flex-direction: column;
+
+            .front {
+                ul {
+                    display: block;
+                    height: auto;
+                }
+            }
+        }
     }
 `;
 
