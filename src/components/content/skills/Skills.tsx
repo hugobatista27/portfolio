@@ -6,11 +6,13 @@ import { SoftSkills, Graduation, HardSkills } from './data';
 import IMG_SKILLS from './images/imagem-skills.png';
 
 const SkillsStyle = styled.div`
+    display: flex;
     padding: 20px 0;
     background-color: #5AE4A8;
 
     h1 {
         font-size: 60px;
+        margin-bottom: 32px;
     }
 
     h2 {
@@ -28,46 +30,67 @@ const SkillsStyle = styled.div`
         padding-bottom: 3px;
         word-wrap: break-word;
     }
+
+    @media (max-width: 1000px) {
+            & > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 `;
 
 const BoxSkills = styled.div`
-    display: flex;
-    gap: 14px;
+    width: 100%;
+    display: grid;
+    grid-template-areas: "soft hard img" "graduation hard img";
+    grid-template-columns: minmax(200px, 260px) minmax(400px, 470px);
+    gap: 12px;
+    align-items: center;
 
 
-    .Soft-Graduation {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
+    & > div {
+        background-color: white;
+        border-radius: 22px;
+        border: 1px solid black;
 
-        max-width: 260px;
-
-        & > div {
-            background-color: white;
-            border-radius: 22px;
-            border: 1px solid black;
-
-            padding: 15px;
-        }
+        padding: 15px;
 
     }
 
-    img {
-        width: 330px;
+    .soft {
+        grid-area: soft;
+    }
+    .graduation {
+        grid-area: graduation;
+    }
+    .hard {
+        grid-area: hard;
+    }
+    & > img {
+        grid-area: img;
+        width: 300px;
+    }
+
+    @media (max-width: 1000px) {
+        width: 600px;
+        grid-template-areas:
+            "soft img"
+            "graduation img "
+            "hard hard";
+        grid-template-columns: 1fr 1fr;
     }
 `;
 
 const HardSkillsStyle = styled.div`
     width: 100%;
+    height: 100%;
 
-    background-color: white;
-    border-radius: 22px;
-    border: 1px solid black;
 
-    padding: 15px;
     & > div {
         display: grid;
         grid-template-areas: "front front" "back other";
+        grid-template-columns: 1fr 1fr;
     }
 
     .front {
@@ -78,6 +101,7 @@ const HardSkillsStyle = styled.div`
             flex-wrap: wrap;
             height: 74px;
             gap: 0 24px;
+            overflow: hidden;
         }
     }
     .back {
@@ -94,24 +118,22 @@ export default function Skills() {
             <ContentWidth>
                 <h1>Skills</h1>
                 <BoxSkills>
-                    <div className="Soft-Graduation">
-                        <div>
-                            <h2>Soft</h2>
-                            <ul>
-                                {SoftSkills.map((skill, index) => <li key={skill + index}>{skill}</li>)}
-                            </ul>
-                        </div>
-                        <div>
-                            <h2>Graduação</h2>
-                            <ul>
-                                {Graduation.map((obj, index) => <li key={obj.course + index}>
-                                    <p>{obj.course}</p>
-                                    <p>{obj.startYear} - {obj.conclusionYear}</p>
-                                </li>)}
-                            </ul>
-                        </div>
+                    <div className="soft">
+                        <h2>Soft</h2>
+                        <ul>
+                            {SoftSkills.map((skill, index) => <li key={skill + index}>{skill}</li>)}
+                        </ul>
                     </div>
-                    <HardSkillsStyle>
+                    <div className="graduation">
+                        <h2>Graduação</h2>
+                        <ul>
+                            {Graduation.map((obj, index) => <li key={obj.course + index}>
+                                <p>{obj.course}</p>
+                                <p>{obj.startYear} - {obj.conclusionYear}</p>
+                            </li>)}
+                        </ul>
+                    </div>
+                    <HardSkillsStyle className="hard">
                         <h2>Hard</h2>
                         <div>
                             {HardSkills.map((obj, index) => {
