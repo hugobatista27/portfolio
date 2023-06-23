@@ -39,6 +39,19 @@ const HeaderStyle = styled.header`
             }
         }
     }
+
+    @media (max-width: 1000px) {
+        & > div {
+            width: 600px;
+        }
+    }
+
+    @media (max-width: 650px) {
+        & > div {
+            max-width: 100%;
+            justify-content: center;
+        }
+    }
 `
 
 const LogoStyle = styled.div`
