@@ -60,6 +60,8 @@ const HeaderStyle = styled.header`
     @media (max-width: 1000px) {
         & > div {
             width: 600px;
+            gap: 0;
+            justify-content: space-between;
         }
     }
 
