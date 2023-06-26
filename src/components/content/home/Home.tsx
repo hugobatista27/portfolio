@@ -51,8 +51,38 @@ const HomeStyle = styled.div`
         span {
             width: 1px;
             background-color: #D4D4D4;
-            height: 100%;
+            height: 50px;
         }
+    }
+
+    @media (max-width: 1000px) {
+        * {
+            text-align: center;
+        }
+
+        & > div {
+            align-items: center;
+            flex-direction: column-reverse;
+            width: 600px;
+        }
+
+        .content {
+            gap: 24px;
+            align-items: center;
+        }
+
+        .stack {
+            width: 100%;
+        }
+        .home-img {
+            img {
+                width: 300px;
+            }
+        }
+    }
+
+    @media (max-width: 650px) {
+        
     }
 `;
 
@@ -83,7 +113,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className='home-img'>
                     <img src={HOME_IMG} alt="home image" />
                 </div>
             </ContentWidth>
