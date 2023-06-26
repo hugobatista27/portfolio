@@ -3,8 +3,9 @@ import SASS from './images/sass-logo-black.png';
 import REACT from './images/react-logo-black.png';
 import MONGO from './images/mongo-logo-black.png';
 
-function imageExport(technologyName: string) {
-    type imgType = {img: string, description: string}
+type imgType = {img: string, description: string}
+
+function imageExport(technologyName: string) : imgType {
     let imgInfo: imgType = {img: '', description: ''};
 
     switch (technologyName) {
