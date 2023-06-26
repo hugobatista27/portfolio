@@ -28,6 +28,9 @@ const ContentWidth = styled.div`
     max-width: 1000px;
     margin: auto;
     padding: 0 10px;
+    @media (max-width: 1000px) {
+        max-width: 600px;
+    }
 `
 
 export {GlobalStyle, ContentWidth};

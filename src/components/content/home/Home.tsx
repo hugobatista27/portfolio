@@ -63,7 +63,6 @@ const HomeStyle = styled.div`
         & > div {
             align-items: center;
             flex-direction: column-reverse;
-            width: 600px;
         }
 
         .content {
