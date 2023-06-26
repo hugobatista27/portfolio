@@ -64,13 +64,6 @@ const HeaderStyle = styled.header`
             justify-content: space-between;
         }
     }
-
-    @media (max-width: 650px) {
-        & > div {
-            max-width: 100%;
-            justify-content: center;
-        }
-    }
 `
 
 const LogoStyle = styled.div`
