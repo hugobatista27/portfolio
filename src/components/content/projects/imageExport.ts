@@ -4,27 +4,31 @@ import REACT from './images/react-logo-black.png';
 import MONGO from './images/mongo-logo-black.png';
 
 function imageExport(technologyName: string) {
-    let img
+    type imgType = {img: string, description: string}
+    let imgInfo: imgType = {img: '', description: ''};
 
     switch (technologyName) {
         case 'node':
-            img = NODE
+            imgInfo.img = NODE
+            imgInfo.description = "Node"
             break;
         case 'sass':
-            img = SASS
+            imgInfo.img = SASS
+            imgInfo.description = "Sass"
             break;
         case 'react':
-            img = REACT
+            imgInfo.img = REACT
+            imgInfo.description = "React"
             break;
         case 'mongo':
-            img = MONGO
+            imgInfo.img = MONGO
+            imgInfo.description = "Mongo"
             break;
     
         default:
             break;
     }
-
-    return img
+    return imgInfo
 }
 
 export { imageExport };
