@@ -104,9 +104,9 @@ export default function Header() {
                     <span>GO</span>
                 </LogoStyle>
                 <nav>
-                    <a href="">HOME</a>
-                    <a href="">SKILLS</a>
-                    <a href="">PROJECTS</a>
+                    <a href="#home">HOME</a>
+                    <a href="#skills">SKILLS</a>
+                    <a href="#projects">PROJECTS</a>
                 </nav>
             </ContentWidth>
         </HeaderStyle>

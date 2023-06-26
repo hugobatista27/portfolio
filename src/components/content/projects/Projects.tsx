@@ -4,7 +4,7 @@ const ProjectsStyle = styled.div``;
 
 export default function Projects() {
     return (
-        <ProjectsStyle>
+        <ProjectsStyle id='projects'>
             Projects
         </ProjectsStyle>
     )

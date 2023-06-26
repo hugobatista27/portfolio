@@ -151,7 +151,7 @@ const HardSkillsStyle = styled.div`
 
 export default function Skills() {
     return (
-        <SkillsStyle>
+        <SkillsStyle id="skills">
             <ContentWidth>
                 <h1>Skills</h1>
                 <BoxSkills>

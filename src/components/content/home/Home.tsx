@@ -123,7 +123,7 @@ const HomeStyle = styled.div`
 
 export default function Home() {
     return (
-        <HomeStyle>
+        <HomeStyle id='home'>
             <ContentWidth>
                 <div className='content'>
                     <h1>Desenvolvedor Front-End React</h1>
