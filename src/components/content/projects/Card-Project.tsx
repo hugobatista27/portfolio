@@ -1,18 +1,19 @@
-type StackDescription = {
-    img: string,
-    description: string
-}
+import { imageExport } from "./imageExport"
+
+
 
 type CardType = {
     name: string,
     img: string,
-    technologies: StackDescription[],
+    technologies: string[],
     description: string
 }
 
 type PropType = {
     projectInfo: CardType
 }
+
+
 
 export default function CardProject({projectInfo}:PropType) {
     return (
@@ -22,7 +23,13 @@ export default function CardProject({projectInfo}:PropType) {
                 <h2>{projectInfo.name}</h2>
                 <div>
                     <div className="stack">
-                        {projectInfo.technologies.map((technology) => <img src={technology.img} alt="" />) }
+                        {projectInfo.technologies.map((technology) => {
+                            const imgInfo = imageExport(technology)
+
+                            return (
+                                <img src={imgInfo.img} alt={imgInfo.description} />
+                            )
+                        })}
                     </div>
                     <button>
                         Ver Mais
