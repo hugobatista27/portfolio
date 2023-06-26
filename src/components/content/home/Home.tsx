@@ -64,10 +64,8 @@ export default function Home() {
                     <h1>Desenvolvedor Front-End React</h1>
                     <div>
                         <p>Olá, me chamo Hugo! </p>
-                        <p>
-                            Sou apaixonado por tecnologia e desenvolvimento web.
-                            Moro em Santa Catarina, Brasil.
-                        </p>
+                        <p>Sou apaixonado por tecnologia e desenvolvimento web. </p>
+                        <p>Moro em Santa Catarina, Brasil.</p>
                     </div>
                     <div className='contacts'>
                         <a href="">
