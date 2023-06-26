@@ -64,6 +64,19 @@ const HeaderStyle = styled.header`
             justify-content: space-between;
         }
     }
+
+    @media (max-width: 650px) {
+        & > div {
+            width: 100%;
+            height: 72px;
+        }
+
+        nav {
+            a {
+                font-size: 14px;
+            }
+        }
+    }
 `
 
 const LogoStyle = styled.div`
@@ -73,6 +86,12 @@ const LogoStyle = styled.div`
         height: 24px;
         font-size: 30px;
         font-weight: 500;
+    }
+
+    @media (max-width: 650px) {
+        span {
+            font-size: 24px;
+        }
     }
 `
 

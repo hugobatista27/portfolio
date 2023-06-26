@@ -82,6 +82,41 @@ const HomeStyle = styled.div`
     }
 
     @media (max-width: 650px) {
+        padding: 0;
+        margin-top: 20px;
+        margin-bottom: 52px;
+
+        & > div {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .home-img {
+            img {
+                width: 75%;
+            }
+        }
+
+        .message, .stack {
+            p {
+                font-size: 14px;
+            }
+        }
+        .stack {
+            height: 22px;
+            padding: 0 12px;
+            margin-top: 80px;
+            div {
+                height: 100%;
+                gap: 14px;
+                img {
+                    height: 100%;
+                }
+            }
+        }
         
     }
 `;
@@ -92,7 +127,7 @@ export default function Home() {
             <ContentWidth>
                 <div className='content'>
                     <h1>Desenvolvedor Front-End React</h1>
-                    <div>
+                    <div className='message'>
                         <p>Olá, me chamo Hugo! </p>
                         <p>Sou apaixonado por tecnologia e desenvolvimento web. </p>
                         <p>Moro em Santa Catarina, Brasil.</p>
