@@ -3,6 +3,20 @@ import { ContentWidth } from '../../styles/global-style';
 
 const HeaderStyle = styled.header`
     border-bottom: 1px solid black;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        backdrop-filter: blur(8px);
+    }
+
     & > div {
         display: flex;
         align-items: center;
@@ -10,6 +24,9 @@ const HeaderStyle = styled.header`
 
         width: 100%;
         height: 100px;
+
+        position: relative;
+        z-index: 3;
     }
 
     nav {
