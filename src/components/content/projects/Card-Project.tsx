@@ -28,7 +28,35 @@ const CardStyle = styled.div<{$img:string}>`
         background-image: url(${props => props.$img});
         background-repeat: no-repeat;
         background-size: cover;
+        overflow: hidden;
 
+        .deployLink {
+            visibility: visible;
+            position: absolute;
+            top: 200px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.5s;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 21.88%, rgba(0, 0, 0, 0.28) 79.69%);
+
+            a {
+                width: 50px;
+                height: 50px;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &:hover {
+        .deployLink {
+            top: 0;
+            visibility: visible;
+        }
     }
 
     & > .options {
@@ -65,8 +93,11 @@ export default function CardProject({projectInfo}:PropType) {
     return (
         <CardStyle $img={projectInfo.img}>
             <div className="boxImg">
-            {/* <img src={projectInfo.img} alt="" /> */}
-
+                <div className="deployLink">
+                    <a href="">
+                        <img src="https://cdn-icons-png.flaticon.com/512/74/74910.png" alt="" />
+                    </a>
+                </div>
             </div>
             <h2>{projectInfo.name}</h2>
             <div className="options">
