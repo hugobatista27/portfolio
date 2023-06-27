@@ -12,7 +12,7 @@ type LinksType = {
 
 type CardType = {
     name: string,
-    img: string,
+    img: string[],
     technologies: string[],
     description: string,
     links?: LinksType
@@ -140,7 +140,7 @@ export default function CardProject({projectInfo, setShowImages}:PropType) {
     const [showDescripiton, setShowDescripiton] = useState<boolean>(false);
 
     return (
-        <CardStyle $img={projectInfo.img}>
+        <CardStyle $img={projectInfo.img[0]}>
             <div className="boxImg">
                 <div className="deployLink">
                     {showDescripiton && (

@@ -10,7 +10,12 @@ const ExpandedImageStyle = styled.div`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: red;
+    background-color: #000000dc;
+
+    button {
+        font-size: 40px;
+        color: white;
+    }
 `;
 
 export default function ExpandedImage({showImages, setShowImages}:PropType) {
@@ -22,7 +27,9 @@ export default function ExpandedImage({showImages, setShowImages}:PropType) {
                     X
                 </button>
                 <div>
+                    <button>&lt;</button>
                     <img src="" alt="" />
+                    <button>&gt;</button>
                 </div>
             </ExpandedImageStyle>
         )
