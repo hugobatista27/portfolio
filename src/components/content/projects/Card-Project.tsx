@@ -3,6 +3,7 @@ import { imageExport } from "./imageExport"
 import styled, {css} from 'styled-components';
 import GITHUB_LOGO from './images/github-icon.png';
 const IMG_LINK = "https://cdn-icons-png.flaticon.com/512/74/74910.png";
+const EXPAND_WINDOW = "https://cdn-icons-png.flaticon.com/512/151/151926.png";
 
 type LinksType = {
     repository?: string,
@@ -52,7 +53,7 @@ const CardStyle = styled.div<{$img:string}>`
             transition: 0.5s;
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 21.88%, rgba(0, 0, 0, 0.28) 79.69%);
 
-            a {
+            a, button {
                 width: 50px;
                 height: 50px;
                 img {
@@ -60,11 +61,11 @@ const CardStyle = styled.div<{$img:string}>`
                 }
             }
         }
-    }
-    &:hover {
-        .deployLink {
-            top: 0;
-            visibility: visible;
+        &:hover {
+            .deployLink {
+                top: 0;
+                visibility: visible;
+            }
         }
     }
 
@@ -73,6 +74,12 @@ const CardStyle = styled.div<{$img:string}>`
         align-items: center;
         justify-content: space-between;
         margin-top: 4px;
+        button {
+            padding: 8px 12px;
+            border: 1px solid black;
+            border-radius: 20px;
+            font-size: 14px;
+        }
     }
 
     h2 {
@@ -89,12 +96,6 @@ const CardStyle = styled.div<{$img:string}>`
             height: 100%;
         }
 
-    }
-    button {
-        padding: 8px 12px;
-        border: 1px solid black;
-        border-radius: 20px;
-        font-size: 14px;
     }
 `;
 
@@ -134,15 +135,22 @@ const ProjectDescriptionStyle = styled.div<{$show:boolean}>`
 `;
 
 export default function CardProject({projectInfo}:PropType) {
-    const [showDescriprion, setShowDescriprion] = useState<boolean>(false);
+    const [showDescripiton, setShowDescripiton] = useState<boolean>(false);
 
     return (
         <CardStyle $img={projectInfo.img}>
             <div className="boxImg">
                 <div className="deployLink">
-                    <a href={projectInfo.links?.deploy}>
-                        <img src={IMG_LINK} alt="" />
-                    </a>
+                    {showDescripiton && (
+                        <button>
+                            <img src={EXPAND_WINDOW} alt="expand window" />
+                        </button>
+                    )}
+                    {!showDescripiton && (
+                        <a href={projectInfo.links?.deploy}>
+                            <img src={IMG_LINK} alt="deploy" />
+                        </a>
+                    )}
                 </div>
             </div>
             <h2>{projectInfo.name}</h2>
@@ -155,13 +163,11 @@ export default function CardProject({projectInfo}:PropType) {
                         )
                     })}
                 </div>
-                <button
-                    onClick={() => setShowDescriprion(!showDescriprion)}
-                >
-                    Ver Mais
+                <button onClick={() => setShowDescripiton(!showDescripiton)}>
+                    {showDescripiton ? 'Ver Menos' : 'Ver Mais'}
                 </button>
             </div>
-            <ProjectDescriptionStyle $show={showDescriprion}>
+            <ProjectDescriptionStyle $show={showDescripiton}>
                 <p>{projectInfo.description}</p>
                 <div>
                     <a href={projectInfo.links?.repository} target="_blank">
