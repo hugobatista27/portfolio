@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { imageExport } from "./imageExport"
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
+import GITHUB_LOGO from './images/github-icon.png';
+const IMG_LINK = "https://cdn-icons-png.flaticon.com/512/74/74910.png";
+
+type LinksType = {
+    repository?: string,
+    deploy?: string
+}
 
 type CardType = {
     name: string,
     img: string,
     technologies: string[],
-    description: string
+    description: string,
+    links?: LinksType
 }
 
 type PropType = {
@@ -91,9 +99,38 @@ const CardStyle = styled.div<{$img:string}>`
 `;
 
 const ProjectDescriptionStyle = styled.div<{$show:boolean}>`
-    height: ${props => props.$show ? '300px' : 0};
+    max-height: ${props => props.$show ? '300px' : 0};
     overflow: hidden;
-    transition: 1s;
+    transition: .5s;
+
+    ${props =>
+    props.$show &&
+    css`
+      padding-top: 16px;
+      border-top: 1px solid #d4d4d4;
+      margin-top: 16px;
+    `}
+
+    p {
+        font-size: 14px;
+        line-height: 130%;
+        letter-spacing: 1px;
+        text-align: justify;
+        padding: 0 4px;
+    }
+
+    img {
+        width: 26px;
+    }
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 0 12px;
+        margin-top: 8px;
+    }
 `;
 
 export default function CardProject({projectInfo}:PropType) {
@@ -103,8 +140,8 @@ export default function CardProject({projectInfo}:PropType) {
         <CardStyle $img={projectInfo.img}>
             <div className="boxImg">
                 <div className="deployLink">
-                    <a href="">
-                        <img src="https://cdn-icons-png.flaticon.com/512/74/74910.png" alt="" />
+                    <a href={projectInfo.links?.deploy}>
+                        <img src={IMG_LINK} alt="" />
                     </a>
                 </div>
             </div>
@@ -126,6 +163,14 @@ export default function CardProject({projectInfo}:PropType) {
             </div>
             <ProjectDescriptionStyle $show={showDescriprion}>
                 <p>{projectInfo.description}</p>
+                <div>
+                    <a href={projectInfo.links?.repository} target="_blank">
+                        <img src={GITHUB_LOGO} alt="github" />
+                    </a>
+                    <a href={projectInfo.links?.deploy} target="_blank">
+                        <img src={IMG_LINK} alt="deploy" />
+                    </a>
+                </div>
             </ProjectDescriptionStyle>
         </CardStyle>
     )

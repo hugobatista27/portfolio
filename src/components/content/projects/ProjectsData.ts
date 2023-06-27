@@ -1,5 +1,5 @@
 type LinksType = {
-    github?: string,
+    repository?: string,
     deploy?: string
 }
 
@@ -21,7 +21,11 @@ const ProjectsData: CardType[] = [
             "mongo",
             "sass",
         ],
-        description: "O projeto Kanban, uma aplicação web fullstack baseada na metodologia Kanban, design proposto pelo site Frontend Mentor. Com funcionalidade intuitiva e design responsivo, o site permite a organização e gerenciamento de tarefas de forma eficiente. Os usuários podem criar diferentes projetos, quadros de tarefas com subtarefas e mover esses quadros entre as colunas."
+        description: "O projeto Kanban, uma aplicação web fullstack baseada na metodologia Kanban, design proposto pelo site Frontend Mentor. Com funcionalidade intuitiva e design responsivo, o site permite a organização e gerenciamento de tarefas de forma eficiente. Os usuários podem criar diferentes projetos, quadros de tarefas com subtarefas e mover esses quadros entre as colunas.",
+        links: {
+            deploy: "https://kanban-livid-seven.vercel.app/",
+            repository: "https://github.com/hugobatista27/Kanban",
+        }
     }
 ]
 
