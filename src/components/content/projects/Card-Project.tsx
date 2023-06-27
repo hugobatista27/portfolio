@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { imageExport } from "./imageExport"
 import styled, {css} from 'styled-components';
 import GITHUB_LOGO from './images/github-icon.png';
@@ -19,7 +19,9 @@ type CardType = {
 }
 
 type PropType = {
-    projectInfo: CardType
+    projectInfo: CardType,
+    showImages?: boolean,
+    setShowImages: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const CardStyle = styled.div<{$img:string}>`
@@ -134,7 +136,7 @@ const ProjectDescriptionStyle = styled.div<{$show:boolean}>`
     }
 `;
 
-export default function CardProject({projectInfo}:PropType) {
+export default function CardProject({projectInfo, setShowImages}:PropType) {
     const [showDescripiton, setShowDescripiton] = useState<boolean>(false);
 
     return (
@@ -142,7 +144,9 @@ export default function CardProject({projectInfo}:PropType) {
             <div className="boxImg">
                 <div className="deployLink">
                     {showDescripiton && (
-                        <button>
+                        <button
+                            onClick={() => setShowImages(true)}
+                        >
                             <img src={EXPAND_WINDOW} alt="expand window" />
                         </button>
                     )}

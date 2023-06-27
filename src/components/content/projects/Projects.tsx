@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+
 import { ContentWidth } from '../../../styles/global-style';
 import { ProjectsData } from './ProjectsData';
 
 import CardProject from './Card-Project';
+import ExpandedImage from './ExpandedImage';
 
 const ProjectsStyle = styled.div`
     padding: 20px 0;
+    position: relative;
 
     h1 {
         font-size: 60px;
@@ -14,14 +18,17 @@ const ProjectsStyle = styled.div`
 `;
 
 export default function Projects() {
+    const [showImages, setShowImages] = useState<boolean>(true);
+
     return (
         <ProjectsStyle id='projects'>
             <ContentWidth>
                 <h1>Projetos</h1>
                 <div>
-                    {ProjectsData.map(project => <CardProject projectInfo={project}/>)}
+                    {ProjectsData.map(project => <CardProject projectInfo={project} showImages={showImages} setShowImages={setShowImages}/>)}
                 </div>
             </ContentWidth>
+            <ExpandedImage showImages={showImages} setShowImages={setShowImages}/>
         </ProjectsStyle>
     )
 }
