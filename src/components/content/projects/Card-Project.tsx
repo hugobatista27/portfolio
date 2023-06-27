@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { imageExport } from "./imageExport"
 import styled from 'styled-components';
 
@@ -89,7 +90,15 @@ const CardStyle = styled.div<{$img:string}>`
     }
 `;
 
+const ProjectDescriptionStyle = styled.div<{$show:boolean}>`
+    height: ${props => props.$show ? '300px' : 0};
+    overflow: hidden;
+    transition: 1s;
+`;
+
 export default function CardProject({projectInfo}:PropType) {
+    const [showDescriprion, setShowDescriprion] = useState<boolean>(false);
+
     return (
         <CardStyle $img={projectInfo.img}>
             <div className="boxImg">
@@ -104,16 +113,20 @@ export default function CardProject({projectInfo}:PropType) {
                 <div className="stack">
                     {projectInfo.technologies.map((technology) => {
                         const imgInfo = imageExport(technology)
-
                         return (
                             <img src={imgInfo.img} alt={imgInfo.description} />
                         )
                     })}
                 </div>
-                <button>
+                <button
+                    onClick={() => setShowDescriprion(!showDescriprion)}
+                >
                     Ver Mais
                 </button>
             </div>
+            <ProjectDescriptionStyle $show={showDescriprion}>
+                <p>{projectInfo.description}</p>
+            </ProjectDescriptionStyle>
         </CardStyle>
     )
 }
