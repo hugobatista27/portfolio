@@ -4,7 +4,14 @@ import { ProjectsData } from './ProjectsData';
 
 import CardProject from './Card-Project';
 
-const ProjectsStyle = styled.div``;
+const ProjectsStyle = styled.div`
+    padding: 20px 0;
+
+    h1 {
+        font-size: 60px;
+        margin-bottom: 32px;
+    }
+`;
 
 export default function Projects() {
     return (
