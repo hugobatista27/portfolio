@@ -5,7 +5,7 @@ const HeaderStyle = styled.header`
     border-bottom: 1px solid black;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 4;
 
     &:before {
         content: "";
