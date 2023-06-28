@@ -1,8 +1,13 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { PropType } from "./Card-Project";
 import { useReducer } from "react";
 import { ReducerCount } from "../../../genericFunction/ReducerIncrement";
 
+const LockScroll = createGlobalStyle`
+    body {
+        overflow: hidden;
+    }
+`;
 
 const ExpandedImageStyle = styled.div`
     width: 100%;
@@ -13,13 +18,35 @@ const ExpandedImageStyle = styled.div`
     background-color: #000000dc;
     z-index: 5;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     button {
         font-size: 40px;
         color: white;
     }
 
-    img {
-        height: 200px;
+    & > button {
+        position: absolute;
+        top: 0;
+        margin: 20px;
+        align-self: flex-end;
+    }
+    & > div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-height: 500px;
+        justify-content: space-between;
+
+        button {
+            margin: 20px;
+        }
+        img {
+            max-width: 600px;
+            height: 100%;
+        }
     }
 `;
 
@@ -38,13 +65,20 @@ export default function ExpandedImage({projectInfo, showImages, setShowImages}:P
     if (showImages === projectInfo.name) {
         return (
             <ExpandedImageStyle>
+                <LockScroll/>
                 <button onClick={() => setShowImages('')}>
                     X
                 </button>
                 <div>
-                    <button onClick={() => handleDecrement(projectInfo.img.length)}>&lt;</button>
+                    <button 
+                        onClick={() => handleDecrement(projectInfo.img.length)}>
+                            &lt;
+                    </button>
                     <img src={projectInfo.img[state.count]} alt="" />
-                    <button  onClick={() => handleIncrement(projectInfo.img.length)}>&gt;</button>
+                    <button 
+                        onClick={() => handleIncrement(projectInfo.img.length)}>
+                        &gt;
+                    </button>
                 </div>
             </ExpandedImageStyle>
         )
