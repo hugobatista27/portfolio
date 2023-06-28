@@ -5,7 +5,7 @@ type LinksType = {
     deploy?: string
 }
 
-type CardType = {
+export type CardType = {
     name: string,
     img: string[],
     technologies: string[],

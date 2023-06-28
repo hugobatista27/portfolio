@@ -1,24 +1,14 @@
 import React, { useState } from "react";
 import { imageExport } from "./imageExport"
 import styled, {css} from 'styled-components';
+import { CardType } from "./ProjectsData";
 import GITHUB_LOGO from './images/github-icon.png';
 const IMG_LINK = "https://cdn-icons-png.flaticon.com/512/74/74910.png";
 const EXPAND_WINDOW = "https://cdn-icons-png.flaticon.com/512/151/151926.png";
 
-type LinksType = {
-    repository?: string,
-    deploy?: string
-}
+import ExpandedImage from "./ExpandedImage";
 
-type CardType = {
-    name: string,
-    img: string[],
-    technologies: string[],
-    description: string,
-    links?: LinksType
-}
-
-type PropType = {
+export type PropType = {
     projectInfo: CardType,
     showImages?: boolean,
     setShowImages: React.Dispatch<React.SetStateAction<boolean>>
@@ -136,52 +126,55 @@ const ProjectDescriptionStyle = styled.div<{$show:boolean}>`
     }
 `;
 
-export default function CardProject({projectInfo, setShowImages}:PropType) {
+export default function CardProject({projectInfo, setShowImages, showImages}:PropType) {
     const [showDescripiton, setShowDescripiton] = useState<boolean>(false);
 
     return (
-        <CardStyle $img={projectInfo.img[0]}>
-            <div className="boxImg">
-                <div className="deployLink">
-                    {showDescripiton && (
-                        <button
-                            onClick={() => setShowImages(true)}
-                        >
-                            <img src={EXPAND_WINDOW} alt="expand window" />
-                        </button>
-                    )}
-                    {!showDescripiton && (
-                        <a href={projectInfo.links?.deploy}>
+        <>
+            <CardStyle $img={projectInfo.img[0]}>
+                <div className="boxImg">
+                    <div className="deployLink">
+                        {showDescripiton && (
+                            <button
+                                onClick={() => setShowImages(true)}
+                            >
+                                <img src={EXPAND_WINDOW} alt="expand window" />
+                            </button>
+                        )}
+                        {!showDescripiton && (
+                            <a href={projectInfo.links?.deploy}>
+                                <img src={IMG_LINK} alt="deploy" />
+                            </a>
+                        )}
+                    </div>
+                </div>
+                <h2>{projectInfo.name}</h2>
+                <div className="options">
+                    <div className="stack">
+                        {projectInfo.technologies.map((technology) => {
+                            const imgInfo = imageExport(technology)
+                            return (
+                                <img src={imgInfo.img} alt={imgInfo.description} />
+                            )
+                        })}
+                    </div>
+                    <button onClick={() => setShowDescripiton(!showDescripiton)}>
+                        {showDescripiton ? 'Ver Menos' : 'Ver Mais'}
+                    </button>
+                </div>
+                <ProjectDescriptionStyle $show={showDescripiton}>
+                    <p>{projectInfo.description}</p>
+                    <div>
+                        <a href={projectInfo.links?.repository} target="_blank">
+                            <img src={GITHUB_LOGO} alt="github" />
+                        </a>
+                        <a href={projectInfo.links?.deploy} target="_blank">
                             <img src={IMG_LINK} alt="deploy" />
                         </a>
-                    )}
-                </div>
-            </div>
-            <h2>{projectInfo.name}</h2>
-            <div className="options">
-                <div className="stack">
-                    {projectInfo.technologies.map((technology) => {
-                        const imgInfo = imageExport(technology)
-                        return (
-                            <img src={imgInfo.img} alt={imgInfo.description} />
-                        )
-                    })}
-                </div>
-                <button onClick={() => setShowDescripiton(!showDescripiton)}>
-                    {showDescripiton ? 'Ver Menos' : 'Ver Mais'}
-                </button>
-            </div>
-            <ProjectDescriptionStyle $show={showDescripiton}>
-                <p>{projectInfo.description}</p>
-                <div>
-                    <a href={projectInfo.links?.repository} target="_blank">
-                        <img src={GITHUB_LOGO} alt="github" />
-                    </a>
-                    <a href={projectInfo.links?.deploy} target="_blank">
-                        <img src={IMG_LINK} alt="deploy" />
-                    </a>
-                </div>
-            </ProjectDescriptionStyle>
-        </CardStyle>
+                    </div>
+                </ProjectDescriptionStyle>
+            </CardStyle>
+            <ExpandedImage showImages={showImages} setShowImages={setShowImages} projectInfo={projectInfo}/>
+        </>
     )
 }

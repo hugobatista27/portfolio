@@ -5,7 +5,6 @@ import { ContentWidth } from '../../../styles/global-style';
 import { ProjectsData } from './ProjectsData';
 
 import CardProject from './Card-Project';
-import ExpandedImage from './ExpandedImage';
 
 const ProjectsStyle = styled.div`
     padding: 20px 0;
@@ -28,7 +27,6 @@ export default function Projects() {
                     {ProjectsData.map(project => <CardProject projectInfo={project} showImages={showImages} setShowImages={setShowImages}/>)}
                 </div>
             </ContentWidth>
-            <ExpandedImage showImages={showImages} setShowImages={setShowImages}/>
         </ProjectsStyle>
     )
 }

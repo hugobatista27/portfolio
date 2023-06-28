@@ -1,12 +1,7 @@
 import styled from "styled-components";
-import { CardType } from "./Card-Project";
+import { PropType } from "./Card-Project";
 import { useReducer } from "react";
 
-type PropType = {
-    projectInfo: CardType,
-    showImages: boolean | undefined,
-    setShowImages: React.Dispatch<React.SetStateAction<boolean>>
-}
 
 const ExpandedImageStyle = styled.div`
     width: 100%;
