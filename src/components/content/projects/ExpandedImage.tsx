@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { PropType } from "./Card-Project";
 import { useReducer } from "react";
+import { ReducerCount } from "../../../genericFunction/ReducerIncrement";
 
 
 const ExpandedImageStyle = styled.div`
@@ -22,44 +23,17 @@ const ExpandedImageStyle = styled.div`
     }
 `;
 
-const initialState = {
-    count: 0
-};
-
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
-
-const reducer = (state:{count: number}, action:{type: string, payload: number}) => {
-    let position = state.count
-    switch (action.type) {
-        case INCREMENT:
-            position = state.count + 1;
-            if (position === action.payload) {
-                position = 0
-            }
-            break
-        case DECREMENT:
-            position = state.count - 1;
-            if(position < 0) {
-                position = action.payload - 1
-            }
-            break
-        default:
-            throw new Error(`Unsupported action type: ${action.type}`);
-    }
-    return {count: position}
-};
 
 export default function ExpandedImage({projectInfo, showImages, setShowImages}:PropType) {
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(ReducerCount.reducer, ReducerCount.initialState);
 
     const handleIncrement = (payload:number) => {
-        dispatch({type: INCREMENT, payload: payload});
+        dispatch({type: ReducerCount.actionsOptions.INCREMENT, payload: payload});
     };
 
     const handleDecrement = (payload:number) => {
-        dispatch({type: DECREMENT, payload: payload})
+        dispatch({type:  ReducerCount.actionsOptions.DECREMENT, payload: payload})
     };
 
     if (showImages) {
