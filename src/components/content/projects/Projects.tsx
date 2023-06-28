@@ -17,7 +17,7 @@ const ProjectsStyle = styled.div`
 `;
 
 export default function Projects() {
-    const [showImages, setShowImages] = useState<boolean>(true);
+    const [showImages, setShowImages] = useState<string | null>('');
 
     return (
         <ProjectsStyle id='projects'>

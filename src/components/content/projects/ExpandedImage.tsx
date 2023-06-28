@@ -25,7 +25,6 @@ const ExpandedImageStyle = styled.div`
 
 
 export default function ExpandedImage({projectInfo, showImages, setShowImages}:PropType) {
-
     const [state, dispatch] = useReducer(ReducerCount.reducer, ReducerCount.initialState);
 
     const handleIncrement = (payload:number) => {
@@ -36,10 +35,10 @@ export default function ExpandedImage({projectInfo, showImages, setShowImages}:P
         dispatch({type:  ReducerCount.actionsOptions.DECREMENT, payload: payload})
     };
 
-    if (showImages) {
+    if (showImages === projectInfo.name) {
         return (
             <ExpandedImageStyle>
-                <button onClick={() => setShowImages(false)}>
+                <button onClick={() => setShowImages('')}>
                     X
                 </button>
                 <div>

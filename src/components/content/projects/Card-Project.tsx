@@ -10,8 +10,8 @@ import ExpandedImage from "./ExpandedImage";
 
 export type PropType = {
     projectInfo: CardType,
-    showImages?: boolean,
-    setShowImages: React.Dispatch<React.SetStateAction<boolean>>
+    showImages?: string | null,
+    setShowImages: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 const CardStyle = styled.div<{$img:string}>`
@@ -30,6 +30,7 @@ const CardStyle = styled.div<{$img:string}>`
         background-image: url(${props => props.$img});
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
         overflow: hidden;
 
         .deployLink {
@@ -136,13 +137,13 @@ export default function CardProject({projectInfo, setShowImages, showImages}:Pro
                     <div className="deployLink">
                         {showDescripiton && (
                             <button
-                                onClick={() => setShowImages(true)}
+                                onClick={() => setShowImages(projectInfo.name)}
                             >
                                 <img src={EXPAND_WINDOW} alt="expand window" />
                             </button>
                         )}
                         {!showDescripiton && (
-                            <a href={projectInfo.links?.deploy}>
+                            <a href={projectInfo.links?.deploy} target="_blank">
                                 <img src={IMG_LINK} alt="deploy" />
                             </a>
                         )}
