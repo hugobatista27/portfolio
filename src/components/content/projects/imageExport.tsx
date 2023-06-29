@@ -25,7 +25,18 @@ function imageExport(technologyName: string) : imgType {
             imgInfo.img = SiMongodb
             imgInfo.description = "Mongo"
             break;
-    
+        case 'typescript':
+            imgInfo.img = BiLogoTypescript
+            imgInfo.description = "TypeScript"
+            break;
+        case 'styledcomponents':
+            imgInfo.img = SiStyledcomponents
+            imgInfo.description = "Styled-Components"
+            break;
+        case 'next':
+            imgInfo.img = SiNextdotjs
+            imgInfo.description = "Next.js"
+            break;
         default:
             break;
     }
