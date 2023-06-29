@@ -13,10 +13,6 @@ const HomeStyle = styled.div`
         display: flex;
     }
 
-    h1 {
-        font-size: 60px;
-    }
-
     p {
         font-size: 18px;
     }

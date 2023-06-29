@@ -11,12 +11,10 @@ const SkillsStyle = styled.div`
     background-color: #5AE4A8;
 
     h1 {
-        font-size: 60px;
         margin-bottom: 32px;
     }
 
     h2 {
-        font-size: 32px;
         margin-bottom: 20px;
     }
 
