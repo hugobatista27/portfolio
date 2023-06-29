@@ -11,7 +11,6 @@ const ProjectsStyle = styled.div`
     position: relative;
 
     h1 {
-        font-size: 60px;
         margin-bottom: 32px;
     }
 
@@ -19,6 +18,13 @@ const ProjectsStyle = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
+    }
+
+    @media (max-width: 650px) {
+        .boxProjects {
+            grid-template-columns: 1fr;
+
+        }
     }
 `;
 

@@ -25,6 +25,7 @@ const CardStyle = styled.div<{$img:string}>`
         width: 100%;
         height: 270px;
         border-radius: 14px;
+        border: 1px solid #d4d4d4;
 
         position: relative;
         background: #d4d4d4 url(${props => props.$img}) no-repeat center;
@@ -144,7 +145,16 @@ const CardStyle = styled.div<{$img:string}>`
     }
 
     @media (max-width: 1000px) {
-        width: 50%;
+        width: 100%;
+        .boxImg {
+            height: 170px;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .boxImg {
+            height: 200px;
+        }
     }
 `;
 
