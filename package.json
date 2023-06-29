@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
     "require-context.macro": "^1.2.2",
     "styled-components": "^6.0.0-rc.3",
     "yarn": "^1.22.19"
