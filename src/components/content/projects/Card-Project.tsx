@@ -152,6 +152,7 @@ const CardStyle = styled.div<{$img:string}>`
     }
 
     @media (max-width: 650px) {
+        max-width: 300px;
         .boxImg {
             height: 200px;
         }

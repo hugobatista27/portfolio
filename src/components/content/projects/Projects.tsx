@@ -23,7 +23,7 @@ const ProjectsStyle = styled.div`
     @media (max-width: 650px) {
         .boxProjects {
             grid-template-columns: 1fr;
-
+            justify-items: center;
         }
     }
 `;
