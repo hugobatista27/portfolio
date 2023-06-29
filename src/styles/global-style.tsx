@@ -19,8 +19,31 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    h1 {
+        font-size: 60px;
+    }
     li {
         list-style: none;
+    }
+
+    @media (max-width: 1000px) {
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+    }
+
+    @media (max-width: 650px) {
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
     }
 `
 
