@@ -1,5 +1,4 @@
-import GITHUB_LOGO from './images/github-icon.png';
-import LINKEDIN_LOGO from './images/linkedin-icon.png';
+import { RxLinkedinLogo, RxGithubLogo } from 'react-icons/rx'
 import HOME_IMG from './images/home-image.png';
 import { STACK_IMGS } from './images/arraryAllImages';
 
@@ -30,6 +29,12 @@ const HomeStyle = styled.div`
     .contacts {
         display: flex;
         gap: 16px;
+
+        svg {
+            width: 28px;
+            height: 28px;
+            color: black;
+        }
     }
 
     .stack {
@@ -43,6 +48,11 @@ const HomeStyle = styled.div`
             align-items: center;
             gap: 24px;
 
+            img {
+                max-height: 30px;
+                max-width: 50px;
+                object-fit: contain;
+            }
         }
         span {
             width: 1px;
@@ -112,7 +122,6 @@ const HomeStyle = styled.div`
                 }
             }
         }
-        
     }
 `;
 
@@ -128,11 +137,11 @@ export default function Home() {
                         <p>Moro em Santa Catarina, Brasil.</p>
                     </div>
                     <div className='contacts'>
-                        <a href="">
-                            <img src={LINKEDIN_LOGO} alt="my linkedin link" />
-                            </a>
-                        <a href="">
-                            <img src={GITHUB_LOGO} alt="my github link" />
+                        <a href="https://www.linkedin.com/in/hugobatista27/" target='_blank'>
+                            <RxLinkedinLogo/>
+                        </a>
+                        <a href="https://github.com/hugobatista27" target='_blank'>
+                            <RxGithubLogo/>
                         </a>
                     </div>
                     <div className='stack'>
