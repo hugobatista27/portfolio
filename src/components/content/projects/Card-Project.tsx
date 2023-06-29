@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { imageExport } from "./imageExport"
 import styled, {css} from 'styled-components';
 import { CardType } from "./ProjectsData";
-import GITHUB_LOGO from './images/github-icon.png';
-const IMG_LINK = "https://cdn-icons-png.flaticon.com/512/74/74910.png";
-const EXPAND_WINDOW = "https://cdn-icons-png.flaticon.com/512/151/151926.png";
+import { FiExternalLink } from 'react-icons/fi';
+import { BiFullscreen, BiLogoGithub } from 'react-icons/bi';
 
 import ExpandedImage from "./ExpandedImage";
 
@@ -15,7 +14,8 @@ export type PropType = {
 }
 
 const CardStyle = styled.div<{$img:string}>`
-    width: 360px;
+    width: 33%;
+    height: fit-content;
     border: 1px solid black;
     border-radius: 20px;
     padding: 8px;
@@ -23,7 +23,7 @@ const CardStyle = styled.div<{$img:string}>`
 
     & > .boxImg {
         width: 100%;
-        height: 200px;
+        height: 170px;
         border-radius: 14px;
 
         position: relative;
@@ -44,13 +44,16 @@ const CardStyle = styled.div<{$img:string}>`
             justify-content: center;
 
             transition: 0.5s;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 21.88%, rgba(0, 0, 0, 0.28) 79.69%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 21.88%, rgba(0, 0, 0, 0.589) 79.69%);
 
             a, button {
                 width: 50px;
                 height: 50px;
-                img {
-                    width: 100%;
+                svg {
+                    display: block;
+                    width: inherit;
+                    height: inherit;
+                    color: #fff;
                 }
             }
         }
@@ -84,11 +87,15 @@ const CardStyle = styled.div<{$img:string}>`
         align-items: center;
         gap: 8px;
 
-        height: 20px;
-        img {
-            height: 100%;
+        svg {
+            display: block;
+            height: 20px;
+            width: 20px;
         }
+    }
 
+    @media (max-width: 1000px) {
+        width: 50%;
     }
 `;
 
@@ -113,8 +120,11 @@ const ProjectDescriptionStyle = styled.div<{$show:boolean}>`
         padding: 0 4px;
     }
 
-    img {
+    svg {
+        display: block;
         width: 26px;
+        height: 26px;
+        color: black;
     }
 
     & > div {
@@ -139,12 +149,12 @@ export default function CardProject({projectInfo, setShowImages, showImages}:Pro
                             <button
                                 onClick={() => setShowImages(projectInfo.name)}
                             >
-                                <img src={EXPAND_WINDOW} alt="expand window" />
+                                <BiFullscreen/>
                             </button>
                         )}
                         {!showDescripiton && (
                             <a href={projectInfo.links?.deploy} target="_blank">
-                                <img src={IMG_LINK} alt="deploy" />
+                                <FiExternalLink/>
                             </a>
                         )}
                     </div>
@@ -153,9 +163,9 @@ export default function CardProject({projectInfo, setShowImages, showImages}:Pro
                 <div className="options">
                     <div className="stack">
                         {projectInfo.technologies.map((technology) => {
-                            const imgInfo = imageExport(technology)
+                            const ImgInfo = imageExport(technology).img
                             return (
-                                <img src={imgInfo.img} alt={imgInfo.description} />
+                                <ImgInfo/>
                             )
                         })}
                     </div>
@@ -167,10 +177,10 @@ export default function CardProject({projectInfo, setShowImages, showImages}:Pro
                     <p>{projectInfo.description}</p>
                     <div>
                         <a href={projectInfo.links?.repository} target="_blank">
-                            <img src={GITHUB_LOGO} alt="github" />
+                            <BiLogoGithub/>
                         </a>
                         <a href={projectInfo.links?.deploy} target="_blank">
-                            <img src={IMG_LINK} alt="deploy" />
+                            <FiExternalLink/>
                         </a>
                     </div>
                 </ProjectDescriptionStyle>

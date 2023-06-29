@@ -14,6 +14,10 @@ const ProjectsStyle = styled.div`
         font-size: 60px;
         margin-bottom: 32px;
     }
+
+    .boxProjects {
+        display: flex;
+    }
 `;
 
 export default function Projects() {
@@ -23,7 +27,7 @@ export default function Projects() {
         <ProjectsStyle id='projects'>
             <ContentWidth>
                 <h1>Projetos</h1>
-                <div>
+                <div className='boxProjects'>
                     {ProjectsData.map(project => <CardProject projectInfo={project} showImages={showImages} setShowImages={setShowImages}/>)}
                 </div>
             </ContentWidth>

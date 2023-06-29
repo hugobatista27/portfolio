@@ -2,6 +2,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import { PropType } from "./Card-Project";
 import { useReducer } from "react";
 import { ReducerCount } from "../../../genericFunction/ReducerIncrement";
+import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
+import { IoMdClose } from 'react-icons/io'
 
 const LockScroll = createGlobalStyle`
     body {
@@ -67,17 +69,17 @@ export default function ExpandedImage({projectInfo, showImages, setShowImages}:P
             <ExpandedImageStyle>
                 <LockScroll/>
                 <button onClick={() => setShowImages('')}>
-                    X
+                    <IoMdClose/>
                 </button>
                 <div>
                     <button 
                         onClick={() => handleDecrement(projectInfo.img.length)}>
-                            &lt;
+                        <BiSolidLeftArrow/>
                     </button>
                     <img src={projectInfo.img[state.count]} alt="" />
                     <button 
                         onClick={() => handleIncrement(projectInfo.img.length)}>
-                        &gt;
+                        <BiSolidRightArrow/>
                     </button>
                 </div>
             </ExpandedImageStyle>
