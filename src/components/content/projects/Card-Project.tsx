@@ -14,27 +14,24 @@ export type PropType = {
 }
 
 const CardStyle = styled.div<{$img:string}>`
-    width: 33%;
+    width: 100%;
     height: fit-content;
-    border: 1px solid black;
+    border: 1px solid #d4d4d4;
     border-radius: 20px;
     padding: 8px;
-
+    box-shadow: 3px 5px 10px #d4d4d4;
 
     & > .boxImg {
         width: 100%;
-        height: 170px;
+        height: 270px;
         border-radius: 14px;
 
         position: relative;
-        background-image: url(${props => props.$img});
-        background-repeat: no-repeat;
+        background: #d4d4d4 url(${props => props.$img}) no-repeat center;
         background-size: cover;
-        background-position: center;
         overflow: hidden;
 
         .deployLink {
-            visibility: visible;
             position: absolute;
             top: 200px;
             width: 100%;
@@ -49,12 +46,24 @@ const CardStyle = styled.div<{$img:string}>`
             a, button {
                 width: 50px;
                 height: 50px;
+                transition: 0.2;
                 svg {
                     display: block;
                     width: inherit;
                     height: inherit;
                     color: #fff;
                 }
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+            a {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 25px;
+                height: 25px;
+                margin: 12px;
             }
         }
         &:hover {
@@ -75,6 +84,14 @@ const CardStyle = styled.div<{$img:string}>`
             border: 1px solid black;
             border-radius: 20px;
             font-size: 14px;
+            
+            transition: 0.2s;
+            &:hover {
+                background-color: black;
+                color: white;
+                font-weight: 500;
+                transform: scale(1.1);
+            }
         }
     }
 
@@ -87,10 +104,42 @@ const CardStyle = styled.div<{$img:string}>`
         align-items: center;
         gap: 8px;
 
+        div {
+            position: relative;
+
+            span{
+                display: none;
+                position: absolute;
+                bottom: -30px;
+                left: 50%;
+
+                white-space: nowrap;
+                background-color: #fff;
+                padding: 4px;
+                border-radius: 4px;
+                border: 1px solid #d4d4d4;
+                box-shadow: 1px 1px 1px black;
+                z-index: 2;
+            }
+
+            &:hover{
+                span {
+                    display: block;
+                }
+
+            } 
+        }
+
         svg {
             display: block;
             height: 20px;
             width: 20px;
+            transition: 0.2s;
+
+            &:hover {
+                transform: scale(1.8);
+                width: 32px;
+            }
         }
     }
 
@@ -125,6 +174,10 @@ const ProjectDescriptionStyle = styled.div<{$show:boolean}>`
         width: 26px;
         height: 26px;
         color: black;
+
+        &:hover{
+            transform: scale(1.2);
+        }
     }
 
     & > div {
@@ -146,16 +199,19 @@ export default function CardProject({projectInfo, setShowImages, showImages}:Pro
                 <div className="boxImg">
                     <div className="deployLink">
                         {showDescripiton && (
-                            <button
-                                onClick={() => setShowImages(projectInfo.name)}
-                            >
+                            <button onClick={() => setShowImages(projectInfo.name)}>
                                 <BiFullscreen/>
                             </button>
                         )}
                         {!showDescripiton && (
-                            <a href={projectInfo.links?.deploy} target="_blank">
-                                <FiExternalLink/>
-                            </a>
+                            <>
+                                <button onClick={() => setShowImages(projectInfo.name)}>
+                                    <BiFullscreen/>
+                                </button>
+                                <a href={projectInfo.links?.deploy} target="_blank">
+                                    <FiExternalLink/>
+                                </a>
+                            </>
                         )}
                     </div>
                 </div>
@@ -163,9 +219,14 @@ export default function CardProject({projectInfo, setShowImages, showImages}:Pro
                 <div className="options">
                     <div className="stack">
                         {projectInfo.technologies.map((technology) => {
-                            const ImgInfo = imageExport(technology).img
+                            const ImgInfo = imageExport(technology)
                             return (
-                                <ImgInfo/>
+                                <div>
+                                    <ImgInfo.img/>
+                                    <span>
+                                        {ImgInfo.description}
+                                    </span>
+                                </div>
                             )
                         })}
                     </div>
