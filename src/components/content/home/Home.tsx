@@ -2,7 +2,7 @@ import { RxLinkedinLogo, RxGithubLogo } from 'react-icons/rx'
 import HOME_IMG from './images/home-image.png';
 import { STACK_IMGS } from './images/arraryAllImages';
 
-import { ContentWidth } from '../../../styles/global-style';
+import { ContentWidth, HoverTechnologyStyle } from '../../../styles/global-style';
 import styled from 'styled-components';
 
 const HomeStyle = styled.div`
@@ -34,6 +34,10 @@ const HomeStyle = styled.div`
             width: 28px;
             height: 28px;
             color: black;
+            transition: .2s;
+            &:hover {
+                transform: scale(1.2);
+            }
         }
     }
 
@@ -52,9 +56,14 @@ const HomeStyle = styled.div`
                 max-height: 30px;
                 max-width: 50px;
                 object-fit: contain;
+                transition: .2s;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
             }
         }
-        span {
+        .divider {
             width: 1px;
             background-color: #D4D4D4;
             height: 50px;
@@ -146,9 +155,16 @@ export default function Home() {
                     </div>
                     <div className='stack'>
                         <p>Stack</p>
-                        <span></span>
+                        <span className='divider'></span>
                         <div>
-                            {STACK_IMGS.map(image => <img src={image.img} alt={image.description} />)}
+                            {STACK_IMGS.map(image => {
+                                return (
+                                    <HoverTechnologyStyle>
+                                        <img src={image.img} alt={image.description} />
+                                        <span>{image.description}</span>
+                                    </HoverTechnologyStyle>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

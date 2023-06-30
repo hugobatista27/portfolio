@@ -6,6 +6,7 @@ import { FiExternalLink } from 'react-icons/fi';
 import { BiFullscreen, BiLogoGithub } from 'react-icons/bi';
 
 import ExpandedImage from "./ExpandedImage";
+import { HoverTechnologyStyle } from "../../../styles/global-style";
 
 export type PropType = {
     projectInfo: CardType,
@@ -104,32 +105,6 @@ const CardStyle = styled.div<{$img:string}>`
         display: flex;
         align-items: center;
         gap: 8px;
-
-        div {
-            position: relative;
-
-            span{
-                display: none;
-                position: absolute;
-                bottom: -30px;
-                left: 50%;
-
-                white-space: nowrap;
-                background-color: #fff;
-                padding: 4px;
-                border-radius: 4px;
-                border: 1px solid #d4d4d4;
-                box-shadow: 1px 1px 1px black;
-                z-index: 2;
-            }
-
-            &:hover{
-                span {
-                    display: block;
-                }
-
-            } 
-        }
 
         svg {
             display: block;
@@ -232,12 +207,12 @@ export default function CardProject({projectInfo, setShowImages, showImages}:Pro
                         {projectInfo.technologies.map((technology) => {
                             const ImgInfo = imageExport(technology)
                             return (
-                                <div>
+                                <HoverTechnologyStyle>
                                     <ImgInfo.img/>
                                     <span>
                                         {ImgInfo.description}
                                     </span>
-                                </div>
+                                </HoverTechnologyStyle>
                             )
                         })}
                     </div>
