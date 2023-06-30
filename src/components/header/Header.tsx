@@ -3,19 +3,11 @@ import { ContentWidth } from '../../styles/global-style';
 
 const HeaderStyle = styled.header`
     border-bottom: 1px solid black;
+    background-color: #fff;
     position: sticky;
     top: 0;
     z-index: 4;
 
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        backdrop-filter: blur(8px);
-    }
 
     & > div {
         display: flex;
@@ -81,6 +73,7 @@ const HeaderStyle = styled.header`
 const LogoStyle = styled.div`
     display: flex;
     flex-direction: column;
+    margin-bottom: 8px;
     span {
         height: 24px;
         font-size: 30px;
