@@ -64,4 +64,29 @@ const ContentWidth = styled.div`
     }
 `
 
-export {GlobalStyle, ContentWidth};
+const HoverTechnologyStyle = styled.div`
+    position: relative;
+
+    span{
+        display: none;
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+
+        white-space: nowrap;
+        background-color: #fff;
+        padding: 4px;
+        border-radius: 4px;
+        border: 1px solid #d4d4d4;
+        box-shadow: 1px 1px 1px black;
+        z-index: 2;
+    }
+
+    &:hover{
+        span {
+            display: block;
+        }
+    } 
+`;
+
+export {GlobalStyle, ContentWidth, HoverTechnologyStyle};
