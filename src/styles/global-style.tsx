@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    #root > div {
+        scroll-margin-top: 100px;
+    }
+
     button {
         border: none;
         background-color: transparent;
@@ -37,6 +41,10 @@ const GlobalStyle = createGlobalStyle`
     }
 
     @media (max-width: 650px) {
+        #root > div {
+            scroll-margin-top:  72px;
+        }
+
         h1 {
             font-size: 36px;
         }
