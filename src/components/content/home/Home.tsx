@@ -98,7 +98,7 @@ const HomeStyle = styled.div`
     @media (max-width: 650px) {
         padding: 0;
         margin-top: 20px;
-        margin-bottom: 52px;
+        //margin-bottom: 52px;
 
         & > div {
             width: 100%;

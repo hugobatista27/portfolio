@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import { ContentWidth } from '../../styles/global-style';
 
 const HeaderStyle = styled.header`
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #d4d4d4;
     background-color: #fff;
     position: sticky;
     top: 0;
     z-index: 4;
-
 
     & > div {
         display: flex;

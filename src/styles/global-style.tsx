@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
     #root > div {
         scroll-margin-top: 100px;
+        padding-bottom: 80px;
     }
 
     button {
