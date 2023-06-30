@@ -130,6 +130,16 @@ const CardStyle = styled.div<{$img:string}>`
         max-width: 300px;
         .boxImg {
             height: 200px;
+            .deployLink {
+                top: 0;
+                background-image: none;
+                button, a {
+                    box-sizing: content-box;
+                    border-radius: 4px;
+                    padding: 2px;
+                    background-color: #6e6e6e59;
+                }
+            }
         }
     }
 `;
