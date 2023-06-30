@@ -24,6 +24,14 @@ const ExpandedImageStyle = styled.div`
     flex-direction: column;
     justify-content: center;
 
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: none;
+    }
+
     button {
         font-size: 40px;
         color: white;
@@ -50,6 +58,37 @@ const ExpandedImageStyle = styled.div`
             height: 100%;
         }
     }
+
+    @media (max-width: 650px) {
+        .desktop {
+            display: none;
+        }
+
+        .mobile {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+
+            & > div {
+                width: 100vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 20%;
+            }
+            
+            button {
+                display: none;
+            }
+            
+            img {
+                scroll-snap-align: center;
+                max-width: 100vw;
+                max-height: 400px;
+                height: fit-content;
+            }
+        }
+    }
 `;
 
 
@@ -71,7 +110,7 @@ export default function ExpandedImage({projectInfo, showImages, setShowImages}:P
                 <button onClick={() => setShowImages('')}>
                     <IoMdClose/>
                 </button>
-                <div>
+                <div className="desktop">
                     <button 
                         onClick={() => handleDecrement(projectInfo.img.length)}>
                         <BiSolidLeftArrow/>
@@ -81,6 +120,12 @@ export default function ExpandedImage({projectInfo, showImages, setShowImages}:P
                         onClick={() => handleIncrement(projectInfo.img.length)}>
                         <BiSolidRightArrow/>
                     </button>
+                </div>
+                <div className="mobile">
+                    {projectInfo.img.map((img) => <div>
+                        <img src={img} alt="" />
+                    </div>)
+                    }
                 </div>
             </ExpandedImageStyle>
         )
