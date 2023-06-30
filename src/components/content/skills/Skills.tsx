@@ -46,13 +46,13 @@ const BoxSkills = styled.div`
     gap: 12px;
     align-items: center;
 
-
     & > div {
         background-color: white;
         border-radius: 22px;
-        border: 1px solid black;
-
-        padding: 15px;
+        border: 1px solid #d4d4d4;
+        border-radius: 20px;
+        box-shadow: 7px 11px 10px #37373778;
+        padding: 16px;
     }
 
     .soft {
