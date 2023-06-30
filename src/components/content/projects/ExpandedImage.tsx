@@ -29,7 +29,7 @@ const ExpandedImageStyle = styled.div`
     }
 
     .desktop {
-        display: none;
+        display: flex;
     }
 
     button {
@@ -66,6 +66,7 @@ const ExpandedImageStyle = styled.div`
 
         .mobile {
             display: flex;
+            overflow-y: hidden;
             overflow-x: scroll;
             scroll-snap-type: x mandatory;
 
