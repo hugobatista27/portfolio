@@ -1,7 +1,8 @@
 import { ContentWidth } from "../../../styles/global-style";
 import styled from 'styled-components';
+import { useState } from 'react';
 
-import { SoftSkills, Graduation, HardSkills } from './data';
+import { SoftSkills, Graduation, HardSkills, ClassNameType } from './data';
 
 import IMG_SKILLS from './images/imagem-skills.png';
 
@@ -34,6 +35,12 @@ const SkillsStyle = styled.div`
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+    }
+
+    @media (max-width: 650px) {
+        h3 {
+            margin-bottom: 0;
         }
     }
 `;
@@ -110,11 +117,13 @@ const HardSkillsStyle = styled.div`
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            height: 74px;
-            gap: 0 24px;
-            overflow: hidden;
-            box-sizing: content-box;
-            padding-bottom: 10px;
+            @media (min-width: 650px) {
+                height: 74px;
+                gap: 0 24px;
+                overflow: hidden;
+                box-sizing: content-box;
+                padding-bottom: 10px;
+            }
         }
     }
     .back {
@@ -124,29 +133,51 @@ const HardSkillsStyle = styled.div`
         grid-area: other;
     }
 
+    button {
+        display: none;
+    }
     
-
     @media (max-width: 650px) {
-            & > div {
-                display: flex;
-                flex-direction: column;
-
-            .front {
-                ul {
-                    display: block;
-                    height: auto;
-                }
-            }
+        & > div {
+            display: flex;
+            flex-direction: column;
 
             ul {
                 box-sizing: content-box;
-                padding-bottom: 10px;
+                overflow: hidden;
+                height: 0;
+                margin-bottom: 10px;
+            }
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            button {
+                display: block;
             }
         }
     }
 `;
 
 export default function Skills() {
+    const [seeMoreSkills, setSeeMoreSkills] = useState<ClassNameType | null>();
+
+    const showSkills = (skillArea : ClassNameType) => {
+        if (seeMoreSkills === skillArea) {
+            setSeeMoreSkills(null)
+        } else {
+            setSeeMoreSkills(skillArea)
+        }
+    }
+
+    const verifyShowSkill = (className: string) => {
+        if (className === seeMoreSkills) {
+            return true
+        }
+    }
+
     return (
         <SkillsStyle id="skills">
             <ContentWidth>
@@ -173,8 +204,15 @@ export default function Skills() {
                             {HardSkills.map((obj, index) => {
                                 return (
                                     <div key={obj.course + index} className={obj.className}>
-                                        <h3>{obj.course}</h3>
-                                        <ul>
+                                        <div className="title">
+                                            <h3>{obj.course}</h3>
+                                            <button
+                                                onClick={() => showSkills(obj.className)}
+                                            >
+                                                &gt;
+                                            </button>
+                                        </div>
+                                        <ul style={{height: verifyShowSkill(obj.className) ? '100%' : '0'}}>
                                             {obj.skills.map((skill, index) => <li key={skill + index}>
                                                 {skill}
                                             </li>)}
