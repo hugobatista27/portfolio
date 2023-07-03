@@ -19,10 +19,12 @@ const Graduation: typeGraduations[] = [
     }
 ]
 
+export type ClassNameType = 'front' | 'back' | 'other'
+
 type typeHardSkill = {
     course: string,
     skills: string[],
-    className: string
+    className: ClassNameType
 }
 
 const HardSkills: typeHardSkill[] = [
