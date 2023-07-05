@@ -1,8 +1,9 @@
 import { ContentWidth } from "../../../styles/global-style";
 import styled from 'styled-components';
-import { useState } from 'react';
 
-import { SoftSkills, Graduation, HardSkills, ClassNameType } from './data';
+import SoftSkillsCard from "./skillsComponents/SoftSkillsCard";
+import GraduationCard from "./skillsComponents/GraduationCard";
+import HardSkillsCard from "./skillsComponents/HardSkillsCard";
 
 import IMG_SKILLS from './images/imagem-skills.png';
 
@@ -100,128 +101,16 @@ const BoxSkills = styled.div`
     }
 `;
 
-const HardSkillsStyle = styled.div`
-    width: 100%;
-    height: 100%;
-
-
-    & > div {
-        display: grid;
-        grid-template-areas: "front front" "back other";
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .front {
-        grid-area: front;
-        ul {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            @media (min-width: 650px) {
-                height: 74px;
-                gap: 0 24px;
-                overflow: hidden;
-                box-sizing: content-box;
-                padding-bottom: 10px;
-            }
-        }
-    }
-    .back {
-        grid-area: back;
-    }
-    .other {
-        grid-area: other;
-    }
-
-    button {
-        display: none;
-    }
-    
-    @media (max-width: 650px) {
-        & > div {
-            display: flex;
-            flex-direction: column;
-
-            ul {
-                box-sizing: content-box;
-                overflow: hidden;
-                height: 0;
-                margin-bottom: 10px;
-            }
-        }
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            button {
-                display: block;
-            }
-        }
-    }
-`;
 
 export default function Skills() {
-    const [seeMoreSkills, setSeeMoreSkills] = useState<ClassNameType | null>();
-
-    const showSkills = (skillArea : ClassNameType) => {
-        if (seeMoreSkills === skillArea) {
-            setSeeMoreSkills(null)
-        } else {
-            setSeeMoreSkills(skillArea)
-        }
-    }
-
-    const verifyShowSkill = (className: string) => {
-        if (className === seeMoreSkills) {
-            return true
-        }
-    }
-
     return (
         <SkillsStyle id="skills">
             <ContentWidth>
                 <h1>Skills</h1>
                 <BoxSkills>
-                    <div className="soft">
-                        <h2>Soft</h2>
-                        <ul>
-                            {SoftSkills.map((skill, index) => <li key={skill + index}>{skill}</li>)}
-                        </ul>
-                    </div>
-                    <div className="graduation">
-                        <h2>Graduação</h2>
-                        <ul>
-                            {Graduation.map((obj, index) => <li key={obj.course + index}>
-                                <p>{obj.course}</p>
-                                <p>{obj.startYear} - {obj.conclusionYear}</p>
-                            </li>)}
-                        </ul>
-                    </div>
-                    <HardSkillsStyle className="hard">
-                        <h2>Hard</h2>
-                        <div>
-                            {HardSkills.map((obj, index) => {
-                                return (
-                                    <div key={obj.course + index} className={obj.className}>
-                                        <div className="title">
-                                            <h3>{obj.course}</h3>
-                                            <button
-                                                onClick={() => showSkills(obj.className)}
-                                            >
-                                                &gt;
-                                            </button>
-                                        </div>
-                                        <ul style={{height: verifyShowSkill(obj.className) ? '100%' : '0'}}>
-                                            {obj.skills.map((skill, index) => <li key={skill + index}>
-                                                {skill}
-                                            </li>)}
-                                        </ul>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </HardSkillsStyle>
+                    <SoftSkillsCard/>
+                    <GraduationCard/>
+                    <HardSkillsCard/>
                     <img src={IMG_SKILLS} alt="Image Skills" />
                 </BoxSkills>
             </ContentWidth>
