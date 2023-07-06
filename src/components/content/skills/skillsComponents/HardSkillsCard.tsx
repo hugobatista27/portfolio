@@ -18,13 +18,14 @@ const HardSkillsStyle = styled.div`
         ul {
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
             @media (min-width: 650px) {
                 height: 74px;
                 gap: 0 24px;
                 overflow: hidden;
                 box-sizing: content-box;
                 padding-bottom: 10px;
+                flex-wrap: wrap;
+
             }
         }
     }
@@ -45,10 +46,15 @@ const HardSkillsStyle = styled.div`
             flex-direction: column;
 
             ul {
+                flex-wrap: nowrap;
                 box-sizing: content-box;
                 overflow: hidden;
                 margin-bottom: 10px;
-                height: 0;
+                max-height: 0;
+                transition: max-height 0.4s ease;
+            }
+            .expanded {
+                max-height: 200px;
             }
         }
         .title {
@@ -59,33 +65,6 @@ const HardSkillsStyle = styled.div`
             button {
                 display: block;
             }
-        }
-        
-        .closed {
-            animation-name: close;
-            animation-duration: 1s;
-        }
-        .expanded {
-            animation-name: expand;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
-        }
-    }
-
-    @keyframes expand {
-        from {
-            height: 0%;
-        }
-        to {
-            height: 100%;
-        }
-    }
-    @keyframes close {
-        from {
-            height: 100%;
-        }
-        to {
-            height: 0%;
         }
     }
 `;
