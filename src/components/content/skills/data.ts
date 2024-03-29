@@ -8,14 +8,14 @@ const SoftSkills: string[] = [
 type typeGraduations = {
     course: string,
     startYear: number,
-    conclusionYear: number,
+    conclusionYear: number | string,
 }
 
 const Graduation: typeGraduations[] = [
     {
-        course: "Licenciatura em Educação Física",
-        startYear: 2019,
-        conclusionYear: 2023,
+        course: "ENgenharia de Software",
+        startYear: 2024,
+        conclusionYear: 'Atualmente',
     }
 ]
 
