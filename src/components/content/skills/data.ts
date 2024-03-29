@@ -13,7 +13,7 @@ type typeGraduations = {
 
 const Graduation: typeGraduations[] = [
     {
-        course: "ENgenharia de Software",
+        course: "Engenharia de Software",
         startYear: 2024,
         conclusionYear: 'Atualmente',
     }
