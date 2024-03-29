@@ -36,6 +36,8 @@ const HardSkills: typeHardSkill[] = [
             "JavaScript",
             "TypeScript",
             "React",
+            "Next.js",
+            "Tailwind",
             "Sass",
             "Styled-Components",
         ],
